@@ -12,7 +12,7 @@
 
 ![WeatherXM Smart Stormwater Dashboard](docs/screenshots/dashboard.png)
 
-> 🚀 **Local Dashboard Entrypoint:** `http://localhost:8502`
+> 🚀 **Local Dashboard Entrypoint:** `http://localhost:8501`
 
 ---
 
