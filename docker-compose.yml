@@ -1,0 +1,15 @@
+services:
+  stormwater-dashboard:
+    build: .
+    container_name: weatherxm_stormwater_app
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
+    volumes:
+      - telemetry_data:/app/data
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_THEME_BASE=light
+
+volumes:
+  telemetry_data:
