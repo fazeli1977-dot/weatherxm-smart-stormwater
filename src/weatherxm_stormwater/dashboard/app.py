@@ -1,4 +1,4 @@
-﻿import streamlit as st
+import streamlit as st
 import plotly.graph_objects as go
 import numpy as np
 
@@ -64,7 +64,7 @@ with left_col:
         }
     ))
     gauge_fig.update_layout(height=350, margin=dict(l=20, r=20, t=40, b=20))
-    st.plotly_chart(gauge_fig, use_container_width=True)
+    st.plotly_chart(gauge_fig, width="stretch")
 
 with right_col:
     st.subheader("📈 Hydrograph Simulation (24h Window)")
@@ -80,4 +80,4 @@ with right_col:
         height=350,
         margin=dict(l=20, r=20, t=40, b=20)
     )
-    st.plotly_chart(hydro_fig, use_container_width=True)
+    st.plotly_chart(hydro_fig, width="stretch")
