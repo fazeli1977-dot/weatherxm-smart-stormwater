@@ -24,8 +24,8 @@ dev = [
 ]
 
 [project.scripts]
-wxm-stormwater = "weatherxm_smart_stormwater.cli:app"
-
+wxm-stormwater = "weatherxm_stormwater.cli:main"
+wxm-stormwater-dashboard = "weatherxm_stormwater.dashboard.runner:main"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
