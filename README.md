@@ -1,6 +1,6 @@
 ﻿# WeatherXM Smart Stormwater Infrastructure 🌧️⚡
-[![CI](https://github.com/naomi197/weatherxm-smart-stormwater/actions/workflows/ci.yml/badge.svg)](https://github.com/naomi197/weatherxm-smart-stormwater/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/naomi197/weatherxm-smart-stormwater?color=blue&logo=github)](https://github.com/naomi197/weatherxm-smart-stormwater/releases)
+[![CI](https://github.com/fazeli1977-dot/weatherxm-smart-stormwater/actions/workflows/ci.yml/badge.svg)](https://github.com/fazeli1977-dot/weatherxm-smart-stormwater/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/fazeli1977-dot/weatherxm-smart-stormwater?color=blue&logo=github)](https://github.com/fazeli1977-dot/weatherxm-smart-stormwater/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![DePIN: WeatherXM](https://img.shields.io/badge/DePIN-WeatherXM-00D26A.svg)](https://weatherxm.com)
@@ -20,18 +20,28 @@
 
 
 ```bash
-git clone https://github.com/naomi197/weatherxm-smart-stormwater.git
+git clone https://github.com/fazeli1977-dot/weatherxm-smart-stormwater.git
 cd weatherxm-smart-stormwater
 uv sync --all-groups
 uv run wxm-stormwater-dashboard
 
 ```
 
+Set `WEATHERXM_API_KEY` to use authenticated WeatherXM data with the CLI; without
+it, the CLI uses its built-in demo observation. For example, in PowerShell:
+
+```powershell
+$env:WEATHERXM_API_KEY = "your-api-key"
+uv run wxm-stormwater evaluate
+```
+
+The dashboard currently uses simulated weather and hydrograph data.
+
 ---
 
 ## 👥 Authors & Maintainers
 
-- **Alireza Sani** ([@naomi197](https://github.com/naomi197)) — Lead Architect & Infrastructure Engineer
+- **Alireza Sani** ([@fazeli1977-dot](https://github.com/fazeli1977-dot)) — Lead Architect & Infrastructure Engineer
 
 ## 📄 License
 

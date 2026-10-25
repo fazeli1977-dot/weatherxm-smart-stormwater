@@ -7,6 +7,7 @@ authors = [{ name = "Alireza Sani", email = "alirezafazeli@live.com" }]
 requires-python = ">=3.12"
 dependencies = [
     "httpx>=0.27.0",
+    "numpy>=1.26.4",
     "plotly>=7.1.0",
     "pydantic>=2.7.0",
     "pydantic-settings>=2.2.0",
@@ -24,17 +25,16 @@ dev = [
 ]
 
 [project.scripts]
-wxm-stormwater = "weatherxm_stormwater.cli:main"
+wxm-stormwater = "weatherxm_smart_stormwater.cli:main"
 wxm-stormwater-dashboard = "weatherxm_stormwater.dashboard.runner:main"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/weatherxm_smart_stormwater"]
+packages = ["src/weatherxm_smart_stormwater", "src/weatherxm_stormwater"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
 asyncio_mode = "auto"
-

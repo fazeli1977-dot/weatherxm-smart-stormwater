@@ -1,4 +1,4 @@
-"""Client for fetching meteorological data from WeatherXM network."""
+﻿"""Client for fetching meteorological data from WeatherXM network."""
 from __future__ import annotations
 
 import httpx
@@ -22,7 +22,7 @@ class WeatherXMClient:
         """Fetch latest weather observation for a specific station."""
         headers = {"Accept": "application/json"}
         if self.api_key:
-            headers["Authorization"] = f"Bearer {self.api_key}"
+            headers["X-API-KEY"] = self.api_key
 
         url = f"{self.base_url}/cells/stations/{station_id}"
         try:
@@ -39,7 +39,7 @@ class WeatherXMClient:
                         "status": "ONLINE",
                         "source": "live_api",
                     }
-        except Exception:
+        except httpx.RequestError:
             pass
 
         # Resilient offline/simulation fallback for investor demo

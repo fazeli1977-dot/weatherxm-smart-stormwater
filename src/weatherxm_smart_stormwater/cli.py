@@ -1,4 +1,5 @@
 ﻿import asyncio
+import os
 import typer
 from rich.console import Console
 from rich.table import Table
@@ -22,7 +23,7 @@ def evaluate(
     """
     console.print(Panel.fit("[bold cyan]WeatherXM Smart Stormwater Infrastructure[/bold cyan]\n[dim]DePIN-Driven Hydrologic Risk Analysis[/dim]", border_style="cyan"))
 
-    client = WeatherXMClient()
+    client = WeatherXMClient(api_key=os.getenv("WEATHERXM_API_KEY"))
     obs = asyncio.run(client.get_station_observation(station_id=station_id))
 
     catchment = CatchmentParameters(
@@ -35,10 +36,14 @@ def evaluate(
     assessment = HydrologyEngine.evaluate_catchment(catchment, obs.precipitation_rate_mm_h)
 
     # Station Data Table
-    table_station = Table(title="Live WeatherXM Station Observation", header_style="bold magenta")
+    table_station = Table(title="WeatherXM Station Observation", header_style="bold magenta")
     table_station.add_column("Property", style="dim")
     table_station.add_column("Value", style="bold")
     table_station.add_row("Station Name / ID", f"{obs.name} ({obs.station_id})")
+    table_station.add_row(
+        "Data Source",
+        "Live API" if obs.data_source == "live_api" else "Simulated demo",
+    )
     table_station.add_row("Precipitation Rate", f"{obs.precipitation_rate_mm_h:.1f} mm/h")
     table_station.add_row("24h Accumulation", f"{obs.precipitation_accumulated_24h_mm:.1f} mm")
     table_station.add_row("Temperature / Wind", f"{obs.temperature_c:.1f} °C | {obs.wind_speed_m_s:.1f} m/s")
@@ -66,5 +71,9 @@ def evaluate(
 
     console.print(Panel(f"[{risk_color}]{assessment.recommended_action}[/{risk_color}]", title="Actionable Hydraulic Advisory", border_style=risk_color))
 
-if __name__ == "__main__":
+def main():
     app()
+
+
+if __name__ == "__main__":
+    main()

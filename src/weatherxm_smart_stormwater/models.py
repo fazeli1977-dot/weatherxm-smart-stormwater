@@ -1,5 +1,5 @@
 ﻿from enum import Enum
-from typing import Optional, List
+from typing import Literal, Optional, List
 from pydantic import BaseModel, Field
 
 class FloodRiskLevel(str, Enum):
@@ -11,6 +11,7 @@ class FloodRiskLevel(str, Enum):
 class WeatherObservation(BaseModel):
     station_id: str
     name: str
+    data_source: Literal["live_api", "simulated"] = "simulated"
     precipitation_rate_mm_h: float = Field(ge=0.0, description="Precipitation rate in mm/hour")
     precipitation_accumulated_24h_mm: float = Field(default=0.0, ge=0.0)
     temperature_c: float

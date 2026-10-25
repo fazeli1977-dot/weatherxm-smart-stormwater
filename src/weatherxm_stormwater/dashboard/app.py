@@ -9,7 +9,7 @@ st.set_page_config(
 )
 
 st.title("🌧️ WeatherXM Smart Stormwater Infrastructure")
-st.markdown("**Real-time DePIN-powered Hydrologic Risk & Drainage Monitoring**")
+st.markdown("**Stormwater risk dashboard — demonstration data**")
 
 # Sidebar Controls
 st.sidebar.header("Station Configuration")
@@ -32,7 +32,7 @@ else:
 
 # Top Metrics Bar
 col1, col2, col3, col4 = st.columns(4)
-col1.metric("Station Status", "ONLINE", "DePIN Synced")
+col1.metric("Station Status", "SIMULATED", "Demo data")
 col2.metric("Precipitation Rate", f"{simulated_intensity:.1f} mm/h", "Peak 15m")
 col3.metric("Computed Discharge (Q)", f"{discharge:.2f} m³/s", f"{saturation_pct:.1f}% Capacity")
 col4.metric("Risk Advisory", risk_level)
